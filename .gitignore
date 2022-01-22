@@ -1,0 +1,12 @@
+.env/
+.env
+media/blog_pics/
+media/blog_pics
+media/
+media
+__pycahe__
+__pycahe__/
+migrations/
+migrations
+db.sqlite3/
+db.sqlite3

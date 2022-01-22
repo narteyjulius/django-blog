@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% load blog_tags %}
+{% block content %}
+
+
+<!-- Page header with logo and tagline-->
+<header class="py-5 bg-light border-bottom mb-4">
+    <div class="container">
+        <div class="text-center my-5">
+            <h1 class="fw-bolder">Welcome to Blog Home!</h1>
+            <p class="lead mb-0">This is Our Blog Home Page</p>
+        </div>
+    </div>
+</header>
+<!-- Page content-->
+<div class="container">
+    <div class="row">
+        <!-- Blog entries-->
+        <div class="col-lg-8">
+            <!-- Featured blog post-->
+
+            <div class="card mb-4">
+                {% if featured.image %}
+                <!-- <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" -->
+                <a href="{{ featured.get_absolute_url }}"><img class="card-img-top" src="{{ featured.image.url }}"
+                        alt="..." /></a>
+                {% endif %}
+                <div class="card-body">
+                    <div class="small text-muted">{{ featured.created|date:"N j Y" }}</div>
+                    <h2 class="card-title">{{ featured.title }}</h2>
+                    <p class="card-text">{{ featured.body|truncatewords:20 | safe }}</p>
+                    <a class="btn btn-primary" href="{{ featured.get_absolute_url }}">Read more →</a>
+                </div>
+            </div>
+
+            <!-- Nested row for non-featured blog posts-->
+            <div class="row">
+                {% for post in post_list %}
+                <div class="col-lg-6">
+                    <!-- Blog post-->
+
+                    <div class="card mb-4">
+                        {% if post.image %}
+                        <!-- <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" -->
+                        <a href="{{ post.get_absolute_url }}"><img class="card-img-top" src="{{ post.image.url }}"
+                                alt="..." /></a>
+
+                        {% endif %}
+                        <div class="card-body">
+                            <div class="small text-muted">Posted On: {{ post.created|date:"N j Y" }}</div>
+                            <a href="{{ post.get_absolute_url }}">
+                                <h2 class="card-title h4" style="">{{ post.title }}</h2>
+                            </a>
+                            <p class="card-text">{{ post.body|truncatewords:20 | safe }}
+                            </p>
+                            <a class="btn btn-primary" href="{{ post.get_absolute_url }}">Read more →</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+
+
+        </div>
+        <!-- Side widgets-->
+        <div class="col-lg-4">
+            <!-- Search widget-->
+            <div class="card mb-4">
+                <div class="card-header">Search</div>
+                <div class="card-body">
+                    <div class="input-group">
+                        {% include "search/search_bar.html" %}
+                    </div>
+                </div>
+            </div>
+            <!-- Categories widget-->
+            <div class="card mb-4">
+                <div class="card-header">Categories</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="#!">Web Design</a></li>
+                                <li><a href="#!">HTML</a></li>
+                                <li><a href="#!">Freebies</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="#!">JavaScript</a></li>
+                                <li><a href="#!">CSS</a></li>
+                                <li><a href="#!">Tutorials</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Side widget-->
+            <!-- <div class="card mb-4">
+                <div class="card-header">Most Commented Post</div>
+          
+                <div class="">
+                    {% get_most_commented_posts as most_commented_posts %}
+
+                    {% if most_commented_posts %}
+
+                    {% for post in most_commented_posts %}
+                    <a class="list-group-item list-group-item-action"
+                        href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                    {% endfor %}
+                    {% else %}
+                    <p>
+                        No Post Commented Yet
+                    </p>
+                    {% endif %}
+
+                </div>
+
+            </div> -->
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

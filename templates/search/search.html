@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Search {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="col-md-8 offset-md-2">
+        <header class="border-bottom mb-4 pb-3">
+            <div class="form-inline">
+                {% if query %}
+
+                {% with results.count as total_results %}
+                <span class="mr-md-auto" style="margin-top: 30px;">Found {{ total_results }}
+                    result{{ total_results|pluralize }}</span>
+                {% endwith %}
+                {% endif %}
+
+            </div>
+        </header>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <!-- Blog entries-->
+        <div class="col-lg-8">
+            <div class="row">
+                {% for post in results %}
+                <div class="col-lg-6">
+                    <!-- Blog post-->
+
+                    <div class="card mb-4">
+                        {% if post.image %}
+                        <!-- <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" -->
+                        <a href="{{ post.get_absolute_url }}"><img class="card-img-top" src="{{ post.image.url }}"
+                                alt="..." /></a>
+                        {% endif %}
+                        <div class="card-body">
+                            <div class="small text-muted">{{ post.created|date:"N j Y" }}</div>
+                            <a href="{{ post.get_absolute_url }}">
+                                <h2 class="card-title h4" style="">{{ post.title }}</h2>
+
+
+                            </a>
+                            <p class="card-text">{{ post.body|truncatewords:20 | safe }}
+                            </p>
+                            <a class="btn btn-primary" href="{{ post.get_absolute_url }}">Read more →</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
