@@ -26,7 +26,7 @@ def error_500_page(request, *args, **argv):
 
 
 def about(request):
-    return render(request, 'blog/about.html')
+    return render(request, 'about/about.html')
 
 
 def contact(request):
@@ -36,11 +36,11 @@ def contact(request):
             form.send()
             messages.success(request, f' Thank You for your message. Will get in touch soon')
 
-        return redirect('blog:contact')
+        return redirect('post:contact')
     else:
         form = ContactForm()
 
-    return render(request, 'blog/contact.html', {'form':form})
+    return render(request, 'contact/contact.html', {'form':form})
 
 
 def post_list(request, tag_slug=None):

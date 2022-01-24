@@ -8,8 +8,7 @@ SECRET_KEY = 'django-insecure-$1h#eqs+&td+z4co=0b-13=*!6k(bh7&f9tzr9fd-yci6-z@6d
 # DEBUG = True
 DEBUG = False
 
-ALLOWED_HOSTS = ['luk-blog.herokuapp.com']
-# ALLOWED_HOSTS = ['*','luk-blog.herokuapp.com']
+ALLOWED_HOSTS = ['*','luk-blog.herokuapp.com']
 
 
 INSTALLED_APPS = [
@@ -108,16 +107,16 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'blog',
-        'USER': 'postgres',
-        'PASSWORD':'12345',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'blog',
+#         'USER': 'postgres',
+#         'PASSWORD':'12345',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
 DATABASES = {
     'default': {

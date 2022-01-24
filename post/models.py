@@ -28,7 +28,6 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
-    # models.BooleanField(default=False)
     is_featured = models.BooleanField(default=False)
     image = models.ImageField(upload_to='blog_pics', blank=True, null=True, default='media/no_image.png')
 
@@ -50,18 +49,6 @@ class Post(models.Model):
                                         self.publish.day, self.slug])
 
     def save(self, *args, **kwargs):
-        # original_slug = slugify(self.title)
-        # queryset = BlogPost.objects.all().filter(slug__iexact=original_slug).count()
-
-        # count = 1
-        # slug = original_slug
-        # while(queryset):
-        #     slug = original_slug + '-' + str(count)
-        #     count += 1
-        #     queryset = BlogPost.objects.all().filter(slug__iexact=slug).count()
-
-        # self.slug = slug
-
         if self.is_featured:
             try:
                 temp = Post.objects.get(is_featured=True)
