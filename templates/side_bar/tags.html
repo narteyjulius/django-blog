@@ -1,0 +1,12 @@
+<div class="widget">
+    <h6 class="widget-title">Tags</h6>
+    <div class="tag-cloud">
+        {% for ta in post.tag.all %}
+        <a href="#x" class="btn btn-xs btn-primary m-5 rounded">{{ ta.name }}</a>
+        {% endfor %}
+        <!-- <a href="#x" class="btn btn-xs btn-primary m-5 rounded">#web</a>
+        <a href="#x" class="btn btn-xs btn-primary m-5 rounded">#brand</a>
+        <a href="#x" class="btn btn-xs btn-primary m-5 rounded">#illustrations</a>
+        <a href="#x" class="btn btn-xs btn-primary m-5 rounded">photography</a> -->
+    </div><!-- / tag-cloud -->
+</div><!-- / widget -->

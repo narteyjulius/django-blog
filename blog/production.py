@@ -8,7 +8,8 @@ SECRET_KEY = 'django-insecure-$1h#eqs+&td+z4co=0b-13=*!6k(bh7&f9tzr9fd-yci6-z@6d
 # DEBUG = True
 DEBUG = False
 
-ALLOWED_HOSTS = ['*','luk-blog.herokuapp.com']
+ALLOWED_HOSTS = ['luks-blog.herokuapp.com']
+# ALLOWED_HOSTS = ['*','luk-blog.herokuapp.com']
 
 
 INSTALLED_APPS = [
@@ -121,10 +122,10 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd4b1kbnpcccam5',
-        'USER': 'levtayewoatjcg',
-        'PASSWORD':'230a73672c40a9943ca7e6346b78045f385da6cb8947c46d944654a12677e4d6',
-        'HOST': 'ec2-3-224-157-224.compute-1.amazonaws.com',
+        'NAME': 'd8ias1c1glbma2',
+        'USER': 'hlmrxaezvtcmze',
+        'PASSWORD':'0a4f696842599667464cab03f1b5126a66589800f64f861cca680f40d8f9eebf',
+        'HOST': 'ec2-54-211-174-60.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
@@ -173,6 +174,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
+
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -197,3 +200,8 @@ AWS_STORAGE_BUCKET_NAME ='sylarport'
 AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
 AWS_QUERYSTRING_AUTH = False
 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'sylarnano688@gmail.com'
+EMAIL_HOST_PASSWORD = 'ozaxdfucozadbnyu'

@@ -46,13 +46,12 @@ def contact(request):
 def post_list(request, tag_slug=None):
     posts = Post.published.all()
 
-
     tag = None
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
         posts = posts.filter(tags__in=[tag])
 
-    paginator = Paginator(posts, 2) # 3 posts in each page
+    paginator = Paginator(posts, 1) # 3 posts in each page
     page_number = request.GET.get('page')
     posts = paginator.get_page(page_number)
     return render(request, 'post/post_list.html', { 'tag':tag,
@@ -60,25 +59,25 @@ def post_list(request, tag_slug=None):
                                                     'posts': posts})
 
 
-def home_page(request, tag_slug=None):
-    posts = Post.published.all()
-    # featured_post = Post.objects.get(is_featured=True)
-    featured_post = get_object_or_404(Post, is_featured=True)
-    print(featured_post)
+# def home_page(request, tag_slug=None):
+#     posts = Post.published.all()
+#     # featured_post = Post.objects.get(is_featured=True)
+#     featured_post = get_object_or_404(Post, is_featured=True)
+#     print(featured_post)
 
 
-    tag = None
-    if tag_slug:
-        tag = get_object_or_404(Tag, slug=tag_slug)
-        posts = posts.filter(tags__in=[tag])
+#     tag = None
+#     if tag_slug:
+#         tag = get_object_or_404(Tag, slug=tag_slug)
+#         posts = posts.filter(tags__in=[tag])
 
 
-    return render(request, 'post/home_page.html', { 
-                                                    'tag':tag,
-                                                    'post_list': posts,
-                                                    'posts': posts,
-                                                    'featured': featured_post
-                                                    })
+#     return render(request, 'post/home_page.html', { 
+#                                                     'tag':tag,
+#                                                     'post_list': posts,
+#                                                     'posts': posts,
+#                                                     'featured': featured_post
+#                                                     })
 
 
 

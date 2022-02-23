@@ -1,11 +1,11 @@
-from . import views
 from django.urls import path
+from .views import SearchResultsList
 
 app_name = 'search'
 
 urlpatterns = [
 
-    path('', views.post_search, name='post_search'),
+    path('', SearchResultsList.as_view(), name='post_search'),
 
 ]
 

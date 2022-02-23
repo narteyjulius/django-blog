@@ -1,5 +1,16 @@
-<form action="/search/" method="get">
-    <input class="form-control" type="text" name="query" placeholder="Enter search term..."
-        aria-label="Enter search term..." aria-describedby="button-search" />
+<!-- <form action="/search/" method="get">
+    <input class="form-control rounded" type="text" name="query" placeholder="Enter search term..." />
+    <span class="input-group-btn">
+        <button class="btn btn-sm btn-primary btn-icon overlapping-btn rounded" type="submit"><i
+                class="fas fa-search"></i></button>
+    </span>
     <button class="btn btn-primary" id="button-search" type="submit">Go!</button>
+</form> -->
+<form action="{% url 'search:post_search' %}" method="get">
+    <input type="search" class="form-control rounded" name="query" placeholder="Search...">
+    <span class="input-group-btn">
+        <button class="btn btn-sm btn-primary btn-icon overlapping-btn rounded" type="submit"><i
+                class="fas fa-search"></i></button>
+    </span>
+
 </form>

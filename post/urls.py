@@ -21,8 +21,8 @@ urlpatterns = [
 
 
     # path('feed/', LatestPostsFeed(), name='post_feed'),
-    path('', views.home_page, name='home_page'),
-    path('post/', views.post_list, name='post_list'),
+    # path('', views.home_page, name='home_page'),
+    path('', views.post_list, name='post_list'),
     # path('<int:year>/<int:month>/<int:day>/<slug:post>/', views.post_detail, name='post_detail'),
     path('<int:year>/<int:month>/<int:day>/<slug:post>/', views.post_detail, name='post_detail'),
     path('tag/<slug:tag_slug>/', views.post_list, name='post_list_by_tag'),
