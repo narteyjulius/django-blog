@@ -51,7 +51,7 @@ def post_list(request, tag_slug=None):
         tag = get_object_or_404(Tag, slug=tag_slug)
         posts = posts.filter(tags__in=[tag])
 
-    paginator = Paginator(posts, 1) # 3 posts in each page
+    paginator = Paginator(posts, 2) # 3 posts in each page
     page_number = request.GET.get('page')
     posts = paginator.get_page(page_number)
     return render(request, 'post/post_list.html', { 'tag':tag,
@@ -105,7 +105,7 @@ def post_detail(request, year, month, day, post):
     post_tags_ids = post.tags.values_list('id', flat=True)
     similar_posts = Post.published.filter(tags__in=post_tags_ids).exclude(id=post.id)
     similar_posts = similar_posts.annotate(same_tags=Count('tags')).order_by('-same_tags','-publish')[:4]
-
+    leates_posts = Post.published.all()
 
     return render(request, 'post/post_detail.html',
                                         {'post': post,

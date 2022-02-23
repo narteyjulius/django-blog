@@ -1,19 +1,44 @@
 {% load blog_tags %}
-
+<!-- 
 <div class="card mb-4">
     <div class="card-header">Recent Posts</div>
-    <!-- card-body -->
+    <h6 class="widget-title">Recent Post</h6>
+  
     <div class="">
-        <!-- <h4 class="text-info">Most Commented Post</h4> -->
+       
         {% if latest_posts %}
         {% for post in latest_posts %}
         <a class="list-group-item list-group-item-action" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
         {% endfor %}
         {% else %}
-        <p>
+        <div class="list-group-item list-group-item-action">
             No Similar Post Yet
-        </p>
+        </div>
         {% endif %}
 
+    </div>
+</div> -->
+
+
+<div class="widget">
+    <h6 class="widget-title">Recent Posts</h6>
+    <div class="row">
+        <div class="col-6">
+            <ul class="list-unstyled list-icon list-arrow list-primary list-has-link menu-list">
+                {% if latest_posts %}
+                {% for post in latest_posts %}
+                <li class="mb-10">
+                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                </li>
+                {% endfor %}
+                {% else %}
+
+                <li class="mb-10">
+                    <p>No Posts Yet</p>
+                </li>
+
+                {% endif %}
+            </ul>
+        </div>
     </div>
 </div>
