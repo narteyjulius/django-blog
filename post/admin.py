@@ -1,5 +1,9 @@
 from django.contrib import admin
-from .models import Post, Comment
+from .models import Post, Comment, Category
+
+@admin.register(Category)
+class PostAdmin(admin.ModelAdmin):
+    list_display = ('name', 'available')
 
 
 @admin.register(Post)

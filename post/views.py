@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.core.paginator import Paginator
 from django.db.models import Count
 from taggit.models import Tag
-from .models import Post, Comment
+from .models import Post, Category
 from .forms import CommentForm, ContactForm
 from django.utils.text import slugify
 from django.urls import reverse_lazy
@@ -43,8 +43,15 @@ def contact(request):
     return render(request, 'contact/contact.html', {'form':form})
 
 
-def post_list(request, tag_slug=None):
+def post_list(request, tag_slug=None, category_slug=None):
+    category = None
+    categories = Category.objects.all()
     posts = Post.published.all()
+
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        posts = posts.filter(category=category)
+ 
 
     tag = None
     if tag_slug:
@@ -55,6 +62,8 @@ def post_list(request, tag_slug=None):
     page_number = request.GET.get('page')
     posts = paginator.get_page(page_number)
     return render(request, 'post/post_list.html', { 'tag':tag,
+                                                    'category': category,
+                                                    'categories':categories,
                                                     'post_list': posts,
                                                     'posts': posts})
 

@@ -6,9 +6,31 @@ from taggit.managers import TaggableManager
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 
+
+class Category(models.Model):
+    name = models.CharField(max_length=100, db_index=True)
+    slug = models.SlugField(max_length=255, unique=True)
+    available = models.BooleanField(default=False)
+    # image = models.ImageField(upload_to='categories_img', blank=True)
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'category'
+        verbose_name_plural = 'categories'
+
+
+    def get_absolute_url(self):
+        return reverse('post:product_list_by_category', args=[self.slug])
+
+    def __str__(self):
+        return self.name
+
+
+
 class PublishedManager(models.Manager):
         def get_queryset(self):
             return super(PublishedManager, self).get_queryset().filter(status='published')
+
 
 
 class Post(models.Model):
@@ -30,6 +52,7 @@ class Post(models.Model):
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
     is_featured = models.BooleanField(default=False)
     image = models.ImageField(upload_to='blog_pics', blank=True, null=True, default='media/no_image.png')
+    category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
 
     objects = models.Manager() # The default manager.
     published = PublishedManager() # Our custom manager.
@@ -59,6 +82,7 @@ class Post(models.Model):
                 pass
         
         super(Post, self).save(*args, **kwargs)
+
 
 
 class Comment(models.Model):

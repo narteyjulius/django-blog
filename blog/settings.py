@@ -108,19 +108,20 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'blog.wsgi.application'
 
+# For luks blog
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'd8ias1c1glbma2',
+#         'USER': 'hlmrxaezvtcmze',
+#         'PASSWORD':'0a4f696842599667464cab03f1b5126a66589800f64f861cca680f40d8f9eebf',
+#         'HOST': 'ec2-54-211-174-60.compute-1.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd8ias1c1glbma2',
-        'USER': 'hlmrxaezvtcmze',
-        'PASSWORD':'0a4f696842599667464cab03f1b5126a66589800f64f861cca680f40d8f9eebf',
-        'HOST': 'ec2-54-211-174-60.compute-1.amazonaws.com',
-        'PORT': '5432',
-    }
-}
 
-
+# for the other blog
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -131,6 +132,18 @@ DATABASES = {
 #         'PORT': '5432',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'luksblog',
+        'USER': 'postgres', 
+        'PASSWORD':'postgres',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
 
 
 
