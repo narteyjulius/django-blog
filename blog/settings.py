@@ -5,8 +5,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-$1h#eqs+&td+z4co=0b-13=*!6k(bh7&f9tzr9fd-yci6-z@6d'
 
-DEBUG = True
-# DEBUG = False
+# DEBUG = True
+DEBUG = False
 
 # ALLOWED_HOSTS = ['luk-blog.herokuapp.com']
 ALLOWED_HOSTS = ['*','luk-blog.herokuapp.com']
@@ -107,28 +107,28 @@ TEMPLATES = [
 WSGI_APPLICATION = 'blog.wsgi.application'
 
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd8ias1c1glbma2',
+        'USER': 'hlmrxaezvtcmze',
+        'PASSWORD':'0a4f696842599667464cab03f1b5126a66589800f64f861cca680f40d8f9eebf',
+        'HOST': 'ec2-54-211-174-60.compute-1.amazonaws.com',
+        'PORT': '5432',
+    }
+}
+
 
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'blog',
-#         'USER': 'postgres',
-#         'PASSWORD':'12345',
-#         'HOST': 'localhost',
+#         'NAME': 'd4b1kbnpcccam5',
+#         'USER': 'levtayewoatjcg',
+#         'PASSWORD':'230a73672c40a9943ca7e6346b78045f385da6cb8947c46d944654a12677e4d6',
+#         'HOST': 'ec2-3-224-157-224.compute-1.amazonaws.com',
 #         'PORT': '5432',
 #     }
 # }
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd4b1kbnpcccam5',
-        'USER': 'levtayewoatjcg',
-        'PASSWORD':'230a73672c40a9943ca7e6346b78045f385da6cb8947c46d944654a12677e4d6',
-        'HOST': 'ec2-3-224-157-224.compute-1.amazonaws.com',
-        'PORT': '5432',
-    }
-}
 
 
 
