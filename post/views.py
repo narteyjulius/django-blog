@@ -48,15 +48,25 @@ def post_list(request, tag_slug=None, category_slug=None):
     categories = Category.objects.all()
     posts = Post.published.all()
 
+    tag = None
+     
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         posts = posts.filter(category=category)
- 
 
-    tag = None
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
         posts = posts.filter(tags__in=[tag])
+ 
+    # if category_slug:
+    #     category = get_object_or_404(Category, slug=category_slug)
+    #     posts = posts.filter(category=category)
+ 
+
+    # tag = None
+    # if tag_slug:
+    #     tag = get_object_or_404(Tag, slug=tag_slug)
+    #     posts = posts.filter(tags__in=[tag])
 
     paginator = Paginator(posts, 2) # 3 posts in each page
     page_number = request.GET.get('page')
