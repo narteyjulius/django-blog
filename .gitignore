@@ -2,8 +2,8 @@ media/blog_pics/
 media/blog_pics
 media/
 media
-__pycache__
-__pycache__/
+*__pycache__
+*__pycache__/
 migrations/
 migrations
 db.sqlite3/
