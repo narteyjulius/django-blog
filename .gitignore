@@ -1,5 +1,3 @@
-.evnv/
-.evnv
 media/blog_pics/
 media/blog_pics
 media/
@@ -10,3 +8,7 @@ migrations/
 migrations
 db.sqlite3/
 db.sqlite3
+.evnv/
+.evnv
+blog/production.py
+blog/settings.py
