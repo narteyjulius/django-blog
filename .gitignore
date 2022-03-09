@@ -10,5 +10,5 @@ db.sqlite3/
 db.sqlite3
 .evnv/
 .evnv
-blog/production.py
-blog/settings.py
+# blog/production.py
+# blog/settings.py
