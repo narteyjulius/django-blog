@@ -8,7 +8,7 @@ migrations/
 migrations
 db.sqlite3/
 db.sqlite3
-.evnv/
-.evnv
+# .evnv/
+# .evnv
 # blog/production.py
 # blog/settings.py
