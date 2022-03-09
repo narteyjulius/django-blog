@@ -12,3 +12,4 @@ db.sqlite3
 # .evnv
 # blog/production.py
 # blog/settings.py
+static
